@@ -1,11 +1,11 @@
 [  {
     "kernelSource": {
-      "name": "miku-KernelSU",
-      "repo": "https://github.com/PhamtomK12/kernel_xiaomi_odin",
+      "name": "miku-KernelSU", 
+"repo":"https://github.com/KonkreetBaybee/android_kernel_google_msm-4.14"
       "branch": "TDA",
       "device": "odin"
     },
-    "withKernelSU": true,
+    "withKernelSU": false,
     "toolchains": [
       {
         "repo": "https://android.googlesource.com/platform/prebuilts/gas/linux-x86",
