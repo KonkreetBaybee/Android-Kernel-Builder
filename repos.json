@@ -2,7 +2,7 @@
     {
     "kernelSource": {
       "name": "miku-KernelSU", 
-      "repo":"https://github.com/KonkreetBaybee/android_kernel_google_msm-4.14"
+      "repo":"https://github.com/KonkreetBaybee/android_kernel_google_msm-4.14",
       "branch": "lineage-22.2",
       "device": "floral"
     },
