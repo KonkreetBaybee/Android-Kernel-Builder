@@ -1,4 +1,5 @@
-[  {
+[
+    {
     "kernelSource": {
       "name": "miku-KernelSU", 
       "repo":"https://github.com/KonkreetBaybee/android_kernel_google_msm-4.14"
