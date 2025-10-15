@@ -24,7 +24,7 @@ jobs:
           android: false
           dotnet: true
           haskell: true
-          large-packages: true
+          large-packages: false
           docker-images: true
           swap-storage: true
     
@@ -66,7 +66,15 @@ jobs:
 
       - name: "⭐ Install prerequisites"
         run: |
-          sudo apt update && sudo apt install -y adb autoconf automake axel bc binutils bison build-essential ca-certificates ccache clang cmake curl device-tree-compiler expect fakeroot flex g++ g++-multilib gcc gcc-aarch64-linux-gnu gcc-arm-linux-gnueabi gcc-arm-none-eabi gawk gettext git git-lfs gnupg jq lib32ncurses-dev lib32z1-dev libc6-dev libc6-dev-i386 libelf-dev liblz4-tool libncurses-dev libssl-dev libtool libtool-bin lld llvm lz4 lzop make meson ncurses-dev ninja-build openssl patch patchelf pkg-config python3 python3-pip python3-requests  repo rsync schedtool tar texinfo unzip wget xz-utils zip zlib1g-dev zstd cpio
+          sudo apt update && sudo apt install -y adb autoconf automake axel gcc-multilib bc binutils bison build-essential ca-certificates ccache clang cmake curl device-tree-compiler expect fakeroot flex g++ g++-multilib gcc  gawk gettext git git-lfs gnupg jq lib32ncurses-dev lib32z1-dev libc6-dev libc6-dev-i386 libelf-dev liblz4-tool libncurses-dev libssl-dev libtool libtool-bin lld llvm lz4 lzop make meson ncurses-dev ninja-build openssl patch patchelf pkg-config python3 python3-pip python3-requests  repo rsync schedtool tar texinfo unzip wget xz-utils zip zlib1g-dev zstd cpio
+          sudo apt-get remove -y 'php.*' --fix-missing || echo "::warning::The command [sudo apt-get remove -y 'php.*' --fix-missing] failed to complete successfully. Proceeding..."
+          sudo apt-get remove -y '^mongodb-.*' --fix-missing || echo "::warning::The command [sudo apt-get remove -y '^mongodb-.*' --fix-missing] failed to complete successfully. Proceeding..."
+          sudo apt-get remove -y '^mysql-.*' --fix-missing || echo "::warning::The command [sudo apt-get remove -y '^mysql-.*' --fix-missing] failed to complete successfully. Proceeding..."
+          sudo apt-get remove -y azure-cli google-chrome-stable firefox powershell mono-devel libgl1-mesa-dri --fix-missing || echo "::warning::The command [sudo apt-get remove -y azure-cli google-chrome-stable firefox powershell mono-devel libgl1-mesa-dri --fix-missing] failed to complete successfully. Proceeding..."
+          sudo apt-get remove -y google-cloud-sdk --fix-missing || echo "::debug::The command [sudo apt-get remove -y google-cloud-sdk --fix-missing] failed to complete successfully. Proceeding..."
+          sudo apt-get remove -y google-cloud-cli --fix-missing || echo "::debug::The command [sudo apt-get remove -y google-cloud-cli --fix-missing] failed to complete successfully. Proceeding..."
+          sudo apt-get autoremove -y || echo "::warning::The command [sudo apt-get autoremove -y] failed to complete successfully. Proceeding..."
+          sudo apt-get clean || echo "::warning::The command [sudo apt-get clean] failed to complete successfully. Proceeding..."
 
       - name: "🌟 Clone kernel source => (${{ env.kernelRepo }})"
         working-directory: ./${{ env.kernelDir }}
